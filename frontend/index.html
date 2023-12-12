@@ -13,32 +13,28 @@
             text-align: center;
             margin: 0;
             padding: 0;
-        }
-
-        #uploadContainer {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            margin-top:0px;
         }
 
         .header-container {
-            background-color: #fff;
-            border: 2px solid #ccc;
+            background-color: ##f4d03f;
+            border: 1px solid #e5d922;
             border-radius: 10px;
             padding: 20px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             text-align: center;
-            position: fixed;
-            width: 30%;
-            top: 0;
+            width: 40%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
         }
 
         h1 {
-            color: #000; /* Black color for the heading */
-            margin: 0; /* Remove default margin for cleaner appearance */
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+            margin: 0;
         }
 
         #uploadForm {
@@ -52,7 +48,7 @@
 
         #fileInputContainer {
             position: relative;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         #fileInput {
@@ -71,20 +67,18 @@
             align-items: center;
             justify-content: center;
             font-size: 18px;
-            padding: 20px;
-            background-color: #3498db;
-            color: #fff;
-            border-radius: 5px;
+            color: #3498db; /* Set the text color to your desired color */
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: color 0.3s ease; /* Add transition for text color */
         }
 
         #fileInputLabel:hover {
-            background-color: #2980b9;
+            color: #297fb8;
         }
 
         #imagePreviewContainer {
             margin-top: 20px;
+            width: 100%;
         }
 
         #imagePreview {
@@ -126,26 +120,24 @@
     <title>Mammals Image Classification</title>
 </head>
 <body>
-    <div id="uploadContainer">
-        <div class="header-container">
-            <h1>Mammals Prediction</h1>
-        </div>
-        <form id="uploadForm" action="/predict" method="post" enctype="multipart/form-data">
-            <div id="fileInputContainer">
-                <input type="file" name="file" id="fileInput" accept="image/*">
-                <label for="fileInput" id="fileInputLabel">
-                    <i class="fas fa-cloud-upload-alt upload-icon"></i>
-                    Drag & Drop or Click to Upload
-                </label>
-            </div>
-            <button type="submit" class="predict-btn">Predict</button>
-        </form>
-        <div id="imagePreviewContainer">
-            <h3>Uploaded Image Preview</h3>
-            <img id="imagePreview" alt="Uploaded Image">
-        </div>
-        <div id="predictionResult"></div>
+    <div class="header-container">
+        <h1>Mammals Image Classification</h1>
     </div>
+    <form id="uploadForm" action="/predict" method="post" enctype="multipart/form-data">
+        <div id="fileInputContainer">
+            <input type="file" name="file" id="fileInput" accept="image/*">
+            <label for="fileInput" id="fileInputLabel">
+                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                Drag & Drop or Click to Upload
+            </label>
+        </div>
+        <button type="submit" class="predict-btn">Predict</button>
+    </form>
+    <div id="imagePreviewContainer">
+        <h3>Uploaded Image Preview</h3>
+        <img id="imagePreview" alt="Uploaded Image">
+    </div>
+    <div id="predictionResult"></div>
     <script src="/static/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>

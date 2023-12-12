@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function displayPredictionResult(data) {
     const resultDiv = document.getElementById("predictionResult");
     resultDiv.innerHTML = `
-        <p>Predicted Pose: ${data.class}</p>
+        <p>Predicted: ${data.class}</p>
         <p>Confidence: ${data.confidence}%</p>
     `;
 }
