@@ -23,13 +23,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+model = tf.keras.models.load_model("Mammals_predictionv1.h5")
 
-api_directory = os.path.dirname(os.path.abspath(__file__))
-
-# Construct the path to the model relative to the 'api' directory
-model_path = os.path.join(api_directory, 'model', 'mammals V1 model.keras')
-
-model = load_model(model_path)
 
 class_name = ['african_elephant','alpaca','american_bison','anteater','arctic_fox','armadillo','baboon','badger','blue_whale','brown_bear','camel','dolphin','giraffe','groundhog',
 'highland_cattle',
