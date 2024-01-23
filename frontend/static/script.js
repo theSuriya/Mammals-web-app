@@ -1,10 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("uploadForm");
     const fileInput = document.getElementById("fileInput");
-    const imagePreview = document.getElementById("imagePreview");
+    const predictButton = document.getElementById("predictButton");
+    const loadingIcon = document.getElementById("loadingIcon");
 
     form.addEventListener("submit", function (event) {
         event.preventDefault();
+
+        // Show loading icon and change button text
+        loadingIcon.style.display = "inline-block";
+        predictButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Predicting...';
 
         const formData = new FormData(form);
         fetch("/predict", {
@@ -13,9 +18,19 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(response => response.json())
         .then(data => {
+            // Hide loading icon and reset button text
+            loadingIcon.style.display = "none";
+            predictButton.innerHTML = 'Predict';
+
             displayPredictionResult(data);
         })
-        .catch(error => console.error("Error:", error));
+        .catch(error => {
+            // Hide loading icon in case of error and reset button text
+            loadingIcon.style.display = "none";
+            predictButton.innerHTML = 'Predict';
+
+            console.error("Error:", error);
+        });
     });
 
     // Image preview on file input change
