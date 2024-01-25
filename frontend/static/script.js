@@ -42,27 +42,27 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     predictButton.addEventListener("click", function () {
-        // Disable the button to prevent multiple clicks during the countdown
-        predictButton.disabled = true;
+    // Disable the button to prevent multiple clicks during the countdown
+    predictButton.disabled = true;
 
-        // Start a countdown for 80 seconds
-        let countdown = 80;
+    // Start a countdown for 80 seconds
+    let countdown = 80;
 
-        function updateCountdown() {
-            predictButton.innerHTML = `Predicting in ${countdown} seconds...`;
-            if (countdown === 0) {
-                // Re-enable the button after the countdown is complete
-                predictButton.disabled = false;
-                predictButton.innerHTML = 'Predict';
-            } else {
-                countdown--;
-                setTimeout(updateCountdown, 1000);
-            }
+    function updateCountdown() {
+        predictButton.innerHTML = `Predicting in ${countdown} seconds...`;
+        if (countdown === 0) {
+            // Re-enable the button after the countdown is complete
+            predictButton.disabled = false;
+            predictButton.innerHTML = 'Predict';
+        } else {
+            countdown--;
+            setTimeout(updateCountdown, 1000);
         }
+    }
 
-        // Start the initial countdown
-        updateCountdown();
-    });
+    // Start the initial countdown
+    updateCountdown();
+});
 });
 
 function displayPredictionResult(data) {
