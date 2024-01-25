@@ -47,19 +47,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Start a countdown for 80 seconds
         let countdown = 80;
-        predictButton.innerHTML = `Predicting in ${countdown} seconds...`;
 
-        const countdownInterval = setInterval(() => {
-            countdown--;
+        function updateCountdown() {
             predictButton.innerHTML = `Predicting in ${countdown} seconds...`;
-
             if (countdown === 0) {
                 // Re-enable the button after the countdown is complete
                 predictButton.disabled = false;
                 predictButton.innerHTML = 'Predict';
-                clearInterval(countdownInterval);
+            } else {
+                countdown--;
+                setTimeout(updateCountdown, 1000);
             }
-        }, 1000);
+        }
+
+        // Start the initial countdown
+        updateCountdown();
     });
 });
 
