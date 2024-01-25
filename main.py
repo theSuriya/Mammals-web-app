@@ -23,7 +23,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-model = tf.keras.models.load_model("Mammals_predictionv1.h5")
+
 
 
 class_name = ['african_elephant','alpaca','american_bison','anteater','arctic_fox','armadillo','baboon','badger','blue_whale','brown_bear','camel','dolphin','giraffe','groundhog',
@@ -70,11 +70,6 @@ async def read_root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
-@app.get('/ping')
-async def check():
-    return "Hello world"
-
-
 def read_file_as_image(data):
     img = Image.open(BytesIO(data)).resize((224, 224))
     img_array = tf.keras.preprocessing.image.img_to_array(img)
@@ -83,7 +78,7 @@ def read_file_as_image(data):
 
 @app.post('/predict')
 async def prediction(file: UploadFile = File(...)):
-
+     model = tf.keras.models.load_model("Mammals_predictionv1.h5")
      img = read_file_as_image(await file.read())
      img = np.expand_dims(img, axis=0)
 
