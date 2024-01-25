@@ -40,6 +40,27 @@ document.addEventListener("DOMContentLoaded", function () {
             displayImagePreview(file);
         }
     });
+
+    predictButton.addEventListener("click", function () {
+        // Disable the button to prevent multiple clicks during the countdown
+        predictButton.disabled = true;
+
+        // Start a countdown for 80 seconds
+        let countdown = 80;
+        predictButton.innerHTML = `Predicting in ${countdown} seconds...`;
+
+        const countdownInterval = setInterval(() => {
+            countdown--;
+            predictButton.innerHTML = `Predicting in ${countdown} seconds...`;
+
+            if (countdown === 0) {
+                // Re-enable the button after the countdown is complete
+                predictButton.disabled = false;
+                predictButton.innerHTML = 'Predict';
+                clearInterval(countdownInterval);
+            }
+        }, 1000);
+    });
 });
 
 function displayPredictionResult(data) {
