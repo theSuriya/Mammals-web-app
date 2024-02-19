@@ -33,5 +33,6 @@ Ensure you have the following prerequisites installed:
 1. Clone the repository and install the required dependencies:
 
   ```bash
+   https://github.com/theSuriya/Mammals-web-app.git
   cd your-repository
   pip install -r requirements.txt
