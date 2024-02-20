@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
         predictButton.disabled = true;
 
         // Start a countdown for 80 seconds
-        let countdown = 80;
+        let countdown = 10;
 
         function updateCountdown() {
             predictButton.innerHTML = `Predicting in ${countdown} seconds...`;
