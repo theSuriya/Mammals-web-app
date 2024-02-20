@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Use Promise.race to handle the fetch and timeout promises
         Promise.race([
-            fetch("/predict_mammals", { method: "POST", body: formData }),
+            fetch("/predict", { method: "POST", body: formData }),
             timeoutPromise
         ])
             .then(response => {
