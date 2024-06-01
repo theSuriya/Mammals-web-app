@@ -35,4 +35,9 @@ Ensure you have the following prerequisites installed:
   ```bash
   https://github.com/theSuriya/Mammals-web-app.git
   cd your-repository
+```
+2. Install requirements
+```bash
   pip install -r requirements.txt
+```
+3. Run the main.py file
